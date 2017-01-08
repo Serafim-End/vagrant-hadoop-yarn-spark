@@ -42,25 +42,25 @@ To modify VM memory change the following line:
 line 13: ```v.customize ["modifyvm", :id, "--memory", "1024"]```  
 3. /scripts/common.sh  
 To use a different version of Java, change the following line depending on the version you downloaded to /resources directory.  
-line 4: JAVA_ARCHIVE=jdk-8u25-linux-i586.tar.gz  
+line 4: JAVA_ARCHIVE=jdk-8u111-linux-i586.tar.gz  
 To use a different version of Hadoop you've already downloaded to /resources directory, change the following line:  
-line 8: ```HADOOP_VERSION=hadoop-2.6.0```  
+line 8: ```HADOOP_VERSION=hadoop-2.7.3```  
 To use a different version of Hadoop to be downloaded, change the remote URL in the following line:  
-line 10: ```HADOOP_MIRROR_DOWNLOAD=http://apache.crihan.fr/dist/hadoop/common/stable/hadoop-2.6.0.tar.gz```  
+line 10: ```HADOOP_MIRROR_DOWNLOAD=http://apache.crihan.fr/dist/hadoop/common/stable/hadoop-2.7.3.tar.gz```  
 To use a different version of Spark, change the following lines:  
-line 13: ```SPARK_VERSION=spark-1.1.1```  
-line 14: ```SPARK_ARCHIVE=$SPARK_VERSION-bin-hadoop2.4.tgz```  
-line 15: ```SPARK_MIRROR_DOWNLOAD=../resources/spark-1.1.1-bin-hadoop2.4.tgz```  
+line 13: ```SPARK_VERSION=spark-2.1.0```  
+line 14: ```SPARK_ARCHIVE=$SPARK_VERSION-bin-hadoop2.7.tgz```  
+line 15: ```SPARK_MIRROR_DOWNLOAD=../resources/spark-2.1.0-bin-hadoop2.7.tgz```  
 
 3. /scripts/setup-java.sh  
-To install from Java downloaded locally in /resources directory, if different from default version (1.8.0_25), change the version in the following line:  
+To install from Java downloaded locally in /resources directory, if different from default version (1.8.1_11), change the version in the following line:  
 line 18: ```ln -s /usr/local/jdk1.8.0_111 /usr/local/java```  
 To modify version of Java to be installed from remote location on the web, change the version in the following line:  
 line 12: ```yum install -y jdk-8u111-linux-i586```  
 
 4. /scripts/setup-centos-ssh.sh  
 To modify the version of sshpass to use, change the following lines within the function installSSHPass():  
-line 23: ```wget http://pkgs.repoforge.org/sshpass/sshpass-1.05-1.el6.rf.i686.rpm```  
+line 23: ```wget ftp://fr2.rpmfind.net/linux/dag/redhat/el6/en/i386/dag/RPMS/sshpass-1.05-1.el6.rf.i686.rpm```  
 line 24: ```rpm -ivh sshpass-1.05-1.el6.rf.i686.rpm```  
 
 5. /scripts/setup-spark.sh  
@@ -93,7 +93,7 @@ SSH into node2 and issue the following commands to start YARN.
 Run the following command to make sure you can run a MapReduce job.
 
 ```
-yarn jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar pi 2 100
+yarn jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar pi 2 100
 ```
 
 ## Start Spark in Standalone Mode
