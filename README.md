@@ -22,9 +22,9 @@ Ideal for development cluster on a laptop with at least 4GB of memory.
 2. [Download and install Vagrant](http://www.vagrantup.com/downloads.html).
 3. Run ```vagrant box add centos65 http://files.brianbirkinbine.com/vagrant-centos-65-i386-minimal.box```
 4. Git clone this project, and change directory (cd) into this project (directory).
-5. [Download Hadoop 2.6 into the /resources directory](http://apache.crihan.fr/dist/hadoop/common/stable/hadoop-2.6.0.tar.gz)
-6. [Download Spark 1.1.1 into the /resources directory](http://d3kbcqa49mib13.cloudfront.net/spark-1.1.1-bin-hadoop2.4.tgz)
-7. [Download Java 1.8 into the /resources directory](http://download.oracle.com/otn-pub/java/jdk/8u25-b17/jdk-8u25-linux-i586.tar.gz)
+5. [Download Hadoop 2.7.3 into the /resources directory](http://apache.crihan.fr/dist/hadoop/common/stable/hadoop-2.7.3.tar.gz)
+6. [Download Spark 2.1.0 into the /resources directory](http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7.tgz)
+7. [Download Java 1.8 into the /resources directory](http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-linux-i586.tar.gz)
 8. Run ```vagrant up``` to create the VM.
 9. Run ```vagrant ssh``` to get into your VM.
 10. Run ```vagrant destroy``` when you want to destroy and get rid of the VM.
@@ -54,9 +54,9 @@ line 15: ```SPARK_MIRROR_DOWNLOAD=../resources/spark-1.1.1-bin-hadoop2.4.tgz```
 
 3. /scripts/setup-java.sh  
 To install from Java downloaded locally in /resources directory, if different from default version (1.8.0_25), change the version in the following line:  
-line 18: ```ln -s /usr/local/jdk1.8.0_25 /usr/local/java```  
+line 18: ```ln -s /usr/local/jdk1.8.0_111 /usr/local/java```  
 To modify version of Java to be installed from remote location on the web, change the version in the following line:  
-line 12: ```yum install -y jdk-8u25-linux-i586```  
+line 12: ```yum install -y jdk-8u111-linux-i586```  
 
 4. /scripts/setup-centos-ssh.sh  
 To modify the version of sshpass to use, change the following lines within the function installSSHPass():  
@@ -65,7 +65,7 @@ line 24: ```rpm -ivh sshpass-1.05-1.el6.rf.i686.rpm```
 
 5. /scripts/setup-spark.sh  
 To modify the version of Spark to be used, if different from default version (built for Hadoop2.4), change the version suffix in the following line:  
-line 32: ```ln -s /usr/local/$SPARK_VERSION-bin-hadoop2.4 /usr/local/spark```  
+line 32: ```ln -s /usr/local/$SPARK_VERSION-bin-hadoop2.7 /usr/local/spark```  
 
 # 5. Post Provisioning
 After you have provisioned the cluster, you need to run some commands to initialize your Hadoop cluster. SSH into node1 using  
