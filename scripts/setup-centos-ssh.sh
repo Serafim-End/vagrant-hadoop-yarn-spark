@@ -62,8 +62,18 @@ function sshCopyId {
 	done
 }
 
+# just because it first node, most of editions will be here
+function installRequirements {
+    echo "install nano"
+    yum install nano <<< y
+    echo "install zsh"
+    yum install zsh <<< Y
+}
+
 echo "setup ssh"
 installSSHPass
 createSSHKey
 overwriteSSHCopyId
 sshCopyId
+
+installRequirements
