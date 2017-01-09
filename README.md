@@ -119,6 +119,12 @@ Start the Spark shell using the following command. Try NOT to run this command o
 $SPARK_HOME/bin/spark-shell --master spark://node1:7077
 ```
 
+### Test PySpark using Shell
+Start the PySpark shell using the following command. Try NOT to run this command on the slave nodes.
+```
+$SPARK_HOME/bin/pyspark --master spark://node1:7077
+```
+
 Then go here https://spark.apache.org/docs/latest/quick-start.html to start the tutorial. Most likely, you will have to load data into HDFS to make the tutorial work (Spark cannot read data on the local file system).
 
 # 6. Web UI
