@@ -33,6 +33,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 				node.vm.provision "shell" do |s|
 					s.path = "scripts/setup-centos-ssh.sh"
 					s.args = "-s 2 -t #{numNodes}"
+				node.vm.synced_folder "/Users/nikita/PycharmProjects/recommend_service/recAI", "/home/vagrant/", :mount_options => ["dmode=777","fmode=666"]
 				end
 				node.vm.provision "shell" do |s|
 					s.path = "scripts/setup-pip.sh"
