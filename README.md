@@ -125,6 +125,9 @@ Start the PySpark shell using the following command. Try NOT to run this command
 $SPARK_HOME/bin/pyspark --master spark://node1:7077
 ```
 
+### Small HDFS commands tutorial
+[Learn to manage files] (http://hortonworks.com/hadoop-tutorial/using-commandline-manage-files-hdfs/)
+
 Then go here https://spark.apache.org/docs/latest/quick-start.html to start the tutorial. Most likely, you will have to load data into HDFS to make the tutorial work (Spark cannot read data on the local file system).
 
 # 6. Web UI
