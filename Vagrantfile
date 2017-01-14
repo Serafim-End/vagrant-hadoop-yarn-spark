@@ -6,8 +6,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	r = numNodes..1
 	(r.first).downto(r.last).each do |i|
 		config.vm.define "node-#{i}" do |node|
-			node.vm.box = "centos65"
-			node.vm.box_url = "http://files.brianbirkinbine.com/vagrant-centos-65-i386-minimal.box"
+			node.vm.box = "centos/7"
+			#node.vm.box_url = "http://files.brianbirkinbine.com/vagrant-centos-65-i386-minimal.box"
 			node.vm.provider "virtualbox" do |v|
 			  v.name = "node#{i}"
 			  v.customize ["modifyvm", :id, "--memory", "1024"]
@@ -33,11 +33,29 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 				node.vm.provision "shell" do |s|
 					s.path = "scripts/setup-centos-ssh.sh"
 					s.args = "-s 2 -t #{numNodes}"
-				node.vm.synced_folder "/Users/nikita/PycharmProjects/recommend_service/recAI", "/home/vagrant/", :mount_options => ["dmode=777","fmode=666"]
+				node.vm.synced_folder "~/Code/Python/recai_env/recommendations", "/home/vagrant/recommendations", :mount_options => ["dmode=777","fmode=666"]
 				end
 				node.vm.provision "shell" do |s|
 					s.path = "scripts/setup-pip.sh"
 				end
+
+				# RabbitMQ
+				config.vm.network :forwarded_port, guest: 5672, host: 5672, auto_correct: true
+
+				# Reddis
+				config.vm.network :forwarded_port, guest: 6379, host: 6379, auto_correct: true
+				
+				# Портал
+				config.vm.network :forwarded_port, guest: 8000, host: 8000, auto_correct: true
+				config.vm.network :forwarded_port, guest: 8080, host: 8080, auto_correct: true
+				config.vm.network :forwarded_port, guest: 8088, host: 8088, auto_correct: true
+
+				# Postgres
+				config.vm.network :forwarded_port, guest: 5432, host: 5432, auto_correct: true
+
+				# Spark + Hive
+				config.vm.network :forwarded_port, guest: 1521, host: 1521, auto_correct: true
+
 			end
 			node.vm.provision "shell", path: "scripts/setup-java.sh"
 			node.vm.provision "shell", path: "scripts/setup-hadoop.sh"
