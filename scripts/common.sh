@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #java
-# http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-linux-i586.tar.gz
-JAVA_ARCHIVE=jdk-8u111-linux-i586.tar.gz
+# http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u121-linux-x64.tar.gz
+JAVA_ARCHIVE=jdk-8u121-linux-x64.tar.gz
 #hadoop
 # http://apache.crihan.fr/dist/hadoop/common/stable/hadoop-2.7.3.tar.gz
 HADOOP_PREFIX=/usr/local/hadoop
