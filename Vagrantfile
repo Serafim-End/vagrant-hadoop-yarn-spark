@@ -33,10 +33,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 				node.vm.provision "shell" do |s|
 					s.path = "scripts/setup-centos-ssh.sh"
 					s.args = "-s 2 -t #{numNodes}"
-				node.vm.synced_folder "~/Code/Python/recai_env/recommendations", "/home/vagrant/recommendations", :mount_options => ["dmode=777","fmode=666"]
+				node.vm.synced_folder "~/Code/Python", "/home/vagrant/Code/Python", :mount_options => ["dmode=777","fmode=666"]
 				end
 				node.vm.provision "shell" do |s|
 					s.path = "scripts/setup-pip.sh"
+				end
+				node.vm.provision "shell" do |s|
+					s.path = "scripts/setup-postgresql.sh"
 				end
 
 				# RabbitMQ
@@ -51,7 +54,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 				config.vm.network :forwarded_port, guest: 8088, host: 8088, auto_correct: true
 
 				# Postgres
-				config.vm.network :forwarded_port, guest: 5432, host: 5432, auto_correct: true
+				config.vm.network :forwarded_port, guest: 32, 	host: 5432, auto_correct: true
+				config.vm.network :forwarded_port, guest: 5432, host: 32, 	auto_correct: true
 
 				# Spark + Hive
 				config.vm.network :forwarded_port, guest: 1521, host: 1521, auto_correct: true

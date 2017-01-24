@@ -1,3 +1,4 @@
 /resources/hadoop*
 /resources/jdk*
 /resources/spark*
+./vagrant/*
