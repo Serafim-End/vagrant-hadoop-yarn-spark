@@ -54,8 +54,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 				config.vm.network :forwarded_port, guest: 8088, host: 8088, auto_correct: true
 
 				# Postgres
-				config.vm.network :forwarded_port, guest: 32, 	host: 5432, auto_correct: true
-				config.vm.network :forwarded_port, guest: 5432, host: 32, 	auto_correct: true
+				config.vm.network :forwarded_port, guest: 5432, host: 5432, 	auto_correct: true
 
 				# Spark + Hive
 				config.vm.network :forwarded_port, guest: 1521, host: 1521, auto_correct: true
