@@ -130,6 +130,9 @@ $SPARK_HOME/bin/pyspark --master spark://node1:7077
 
 Then go here https://spark.apache.org/docs/latest/quick-start.html to start the tutorial. Most likely, you will have to load data into HDFS to make the tutorial work (Spark cannot read data on the local file system).
 
+### Small HDFS commands tutorial
+[Learn to manage files] (http://hortonworks.com/hadoop-tutorial/using-commandline-manage-files-hdfs/)
+
 # 6. Web UI
 You can check the following URLs to monitor the Hadoop daemons.
 
